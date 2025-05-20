@@ -1,0 +1,1664 @@
+/* Reset */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  background: #004080;
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar-link {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #004080;
+  text-align: center;
+}
+
+/* Job Cards Grid */
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Job Card Styling */
+.job-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #28a745;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.job-card h3 {
+  margin: 0 0 10px;
+  color: #004080;
+}
+
+.job-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-success {
+  background-color: #007bff;
+  color: white;
+  transition: background 0.2s;
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  color: white;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #1e7e34;
+}
+
+/* Search Input */
+input[type="text"] {
+  width: 97%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+/* Footer */
+.footer {
+  background: #004080;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #333;
+}
+
+/* Result Box */
+.result {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #007bff;
+}
+
+/*table*/
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+td {
+  max-width: 180px;
+}
+
+/* Cải thiện bảng ứng viên */
+/* .candidate-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.candidate-table thead.table-primary {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.candidate-table th, .candidate-table td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+Cải thiện badge kết quả */
+/* .badge.bg-success {
+  background-color: #198754 !important;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529 !important;
+  font-weight: bold;
+  padding: 6px 10px;
+}
+
+.badge.bg-secondary {
+  background-color: #6c757d !important;
+  padding: 6px 10px;
+}
+
+.badge.bg-info {
+  background-color: #0dcaf0 !important;
+  color: #212529 !important;
+  padding: 6px 10px;
+} */
+
+
+
+/* Cải thiện nút thao tác */
+.btn-info.text-white {
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+  color: white !important;
+}
+
+.btn-info.text-white:hover {
+  background-color: #138496 !important;
+  border-color: #117a8b !important;
+}
+
+/* Cải thiện dropdown kết quả
+.form-select option[value="Pass"] {
+  color: #198754;
+  font-weight: bold;
+}
+
+.form-select option[value="Fail CV"] {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.form-select option[value="Fail Interview"] {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+/* Cải thiện khung tìm kiếm */
+.input-group .form-control {
+  padding: 10px 8px;
+  border-left: none;
+}
+
+.input-group .input-group-text {
+  background-color: white;
+  border-right: none;
+  color: #0d6efd;
+}
+
+/* Cải thiện khoảng cách nút trong phần thao tác */
+.d-flex.flex-column.gap-2 {
+  gap: 8px !important;
+}
+
+/* Cải thiện hiển thị lịch phỏng vấn */
+/* .interview-schedule {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+
+.interview-schedule .badge {
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.interview-schedule .small {
+  margin-bottom: 4px;
+}
+
+.interview-schedule .small i {
+  color: #0d6efd;
+} */
+
+/* Cải thiện modal đặt lịch */
+/* .modal-overlay {
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+} */
+
+/* Cải thiện nút bộ lọc */
+/* .btn-group .btn {
+  padding: 8px 12px;
+  font-weight: 500;
+}
+
+.btn-group .btn-outline-success:hover {
+  background-color: #198754;
+  color: white;
+}
+
+.btn-group .btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-group .btn-outline-info:hover {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-group .btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: white;
+}  */
+
+/* Trang chi tiết ứng viên */
+.candidate-detail-page {
+  background-color: #f8f9fa;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.page-header {
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 0;
+}
+
+.back-button {
+  transition: all 0.3s ease;
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.2);
+}
+
+.candidate-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.candidate-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.card-header.bg-gradient {
+  background: linear-gradient(to right, #0d6efd, #0b5ed7);
+  color: white;
+  padding: 15px 20px;
+  font-weight: 500;
+  border: none;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.label {
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #212529;
+}
+
+.highlight {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.skill-badge {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+  border: 1px solid #b8daff;
+  padding: 8px 12px;
+  font-weight: 500;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.skill-badge:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.note-content {
+  background-color: #fff9db;
+  padding: 15px;
+  border-left: 4px solid #ffc107;
+  border-radius: 5px;
+}
+
+.status-card {
+  background-color: #ffffff;
+}
+
+.status-value .badge {
+  font-size: 1rem;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.interview-schedule {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  border-left: 4px solid #0d6efd;
+}
+
+.schedule-item {
+  margin-bottom: 10px;
+  padding: 5px 0;
+}
+
+.schedule-item i {
+  color: #0d6efd;
+}
+
+.schedule-item:last-child {
+  margin-bottom: 0;
+}
+
+.rating-value,
+.strength-value,
+.weakness-value {
+  padding: 8px 12px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  border-left: 3px solid #6c757d;
+}
+
+.strength-value {
+  border-left-color: #198754;
+}
+
+.weakness-value {
+  border-left-color: #dc3545;
+}
+
+.document-card .card-body {
+  padding: 20px;
+}
+
+.cv-button {
+  padding: 12px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-width: 2px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.cv-button:hover {
+  background-color: #0d6efd;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 110, 253, 0.2);
+}
+
+.edit-button {
+  padding: 15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(25, 135, 84, 0.1);
+}
+
+.edit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(25, 135, 84, 0.2);
+}
+
+.error-card {
+  border: none;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.1);
+}
+
+.error-card .alert-heading {
+  color: #842029;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.error-card hr {
+  margin: 20px 0;
+}
+
+.error-card .btn {
+  padding: 12px 20px;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .candidate-detail-page {
+    padding: 15px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .back-button {
+    width: 100%;
+  }
+
+  .label,
+  .info-value {
+    font-size: 0.9rem;
+  }
+}
+
+.skill-badge {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  background-color: #f1f1f1;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.cv-preview-frame {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.cv-preview-container {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.custom-modal-container {
+  background-color: white;
+  border-radius: 5px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  background-color: #0d6efd;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.custom-modal-body {
+  padding: 1rem;
+}
+
+.custom-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+  gap: 10px;
+}
+
+/* Admin.css - Bổ sung các style sau */
+
+/* Các style chung */
+body {
+  background-color: #f8f9fa;
+}
+
+.admin-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Style cho bảng */
+.table {
+  vertical-align: middle;
+}
+
+.table-primary {
+  background-color: #e7f1ff;
+}
+
+.table-primary th {
+  font-weight: 600;
+  color: #0d6efd;
+  border-bottom: 2px solid #0d6efd;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05) !important;
+}
+
+/* Style cho form */
+.form-control:focus,
+.form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control,
+.form-select {
+  border-radius: 6px;
+}
+
+/* Style cho các badge */
+.badge {
+  font-weight: 500;
+  padding: 0.35em 0.65em;
+  border-radius: 6px;
+}
+
+/* Style cho các button */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* Style cho pagination */
+.pagination .page-link {
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+/* Style cho modal */
+.modal-overlay {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Style cho loading overlay */
+.loading-overlay {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.spinner-container {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Style cho các icon */
+.bi {
+  vertical-align: -0.125em;
+}
+
+/* Style cho các trạng thái trống */
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #6c757d;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Style cho các input group */
+.input-group-text {
+  background-color: #f8f9fa;
+  border-right: none;
+}
+
+.input-group .form-control {
+  border-left: none;
+}
+
+.input-group .form-control:focus+.input-group-text {
+  border-color: #86b7fe;
+}
+
+/* Style cho card lịch phỏng vấn */
+.interview-schedule {
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.interview-schedule:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-card {
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* AdminCandidates.css */
+
+.candidates-container {
+  background-color: #f9fafb;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin-bottom: 30px;
+}
+
+.candidates-header {
+  margin-bottom: 24px;
+}
+
+.candidates-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.candidates-title i {
+  font-size: 28px;
+  color: #3b82f6;
+}
+
+/* Nút hành động */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.btn-add,
+.btn-schedule,
+.btn-scan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-add {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-add:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-schedule {
+  background-color: #06b6d4;
+  color: white;
+}
+
+.btn-schedule:hover {
+  background-color: #0891b2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+.btn-scan {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-scan:hover {
+  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Tìm kiếm và bộ lọc */
+.search-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.search-box {
+  position: relative;
+  flex: 1;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+}
+
+.clear-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.clear-search:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Tab bộ lọc */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-tab {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f1f5f9;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+.filter-tab.active {
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+.filter-tab.active:nth-child(3) {
+  background-color: #ef4444;
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+.filter-tab.active:nth-child(4) {
+  background-color: #8b5cf6;
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3);
+}
+
+.filter-tab.active:nth-child(5) {
+  background-color: #6b7280;
+  box-shadow: 0 2px 6px rgba(107, 114, 128, 0.3);
+}
+
+/* Bảng danh sách */
+.candidates-table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.candidates-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+}
+
+.candidates-table thead tr {
+  background-color: #f8fafc;
+}
+
+.candidates-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 2px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  background-color: #f8fafc;
+  z-index: 10;
+}
+
+.candidates-table td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.candidates-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.candidates-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Checkbox */
+.checkbox-column {
+  width: 40px;
+}
+
+.candidates-table input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: #3b82f6;
+}
+
+/* Tên ứng viên */
+.candidate-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.candidate-dob {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Vị trí */
+.position-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #f1f5f9;
+  color: #475569;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Trạng thái */
+.status-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.status-badge.pass {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status-badge.fail {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.status-badge.pending {
+  background-color: #e2e8f0;
+  color: #64748b;
+}
+
+.status-select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Lịch phỏng vấn */
+.interview-schedule {
+  background-color: #f0f9ff;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  border-left: 3px solid #0ea5e9;
+}
+
+.schedule-status {
+  font-weight: 600;
+  color: #0ea5e9;
+  margin-bottom: 8px;
+}
+
+.schedule-date,
+.schedule-time,
+.schedule-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  color: #475569;
+}
+
+.no-schedule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.btn-schedule-small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-schedule-small:hover {
+  background-color: #0284c7;
+}
+
+/* Thao tác */
+.action-buttons-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-view,
+.btn-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-view {
+  background-color: #f1f5f9;
+  color: #3b82f6;
+}
+
+.btn-view:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #f1f5f9;
+  color: #ef4444;
+}
+
+.btn-delete:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* Phân trang */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.candidates-info {
+  color: #475569;
+  font-size: 15px;
+}
+
+.filtered-count {
+  margin-left: 8px;
+  color: #64748b;
+}
+
+.selected-count {
+  margin-left: 12px;
+  background-color: #3b82f6;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.pagination-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(.disabled) {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.pagination-button.active {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.pagination-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dropdown số mục/trang */
+.pagination-selector {
+  margin-top: 8px;
+}
+
+.pagination-selector select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pagination- .pagination-selector select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+/* Trạng thái trống */
+.empty-message {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.empty-message div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty-message i {
+  font-size: 48px;
+  color: #cbd5e1;
+}
+
+.empty-message p {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+}
+
+.btn-clear-search {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-clear-search:hover {
+  background-color: #2563eb;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 24px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.spinner-container p {
+  margin-top: 16px;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .candidates-container {
+    padding: 16px;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+  }
+
+  .btn-add,
+  .btn-schedule,
+  .btn-scan {
+    width: 100%;
+  }
+
+  .pagination-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pagination {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-tabs {
+    flex-wrap: wrap;
+  }
+
+  .filter-tab {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .candidates-table th,
+  .candidates-table td {
+    padding: 12px 8px;
+  }
+
+  .candidates-table {
+    font-size: 14px;
+  }
+
+  .action-buttons-cell {
+    flex-direction: column;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.candidates-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Hiệu ứng hover cho các hàng */
+.candidates-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+/* Hiệu ứng cho các nút */
+button {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.page-link {
+  min-width: 36px;
+  height: 36px;
+  padding: 0;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 50% !important;
+  margin: 0 2px;
+}
+
+.page-item.active .page-link {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: 600;
+}
+
+/* Container căn giữa */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Giao diện nút phân trang đẹp và tròn */
+.pagination .page-link {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 50%;
+  border: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  color: #007bff;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+}
+
+/* Hover hiệu ứng */
+.pagination .page-link:hover {
+  background-color: #e2e6ea;
+  color: #0056b3;
+}
+
+/* Active nút hiện tại */
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-color: #007bff;
+}
+
+/* Vô hiệu hoá nút */
+.pagination .page-item.disabled .page-link {
+  color: #adb5bd;
+  background-color: transparent;
+  border-color: transparent;
+  pointer-events: none;
+}
+
+/* Xoá dấu chấm (nếu có default ul li marker) */
+.pagination {
+  list-style: none !important;
+  padding-left: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.list-button {
+  margin-bottom: 10px;
+}
+
+.button-add-jd {
+  margin-bottom: 10px;
+
+}
+
+/* Admin Layout Styles */
+
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.admin-header-left {
+  font-weight: bold;
+}
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-button:hover {
+  text-decoration: underline;
+}
+
+/* Body */
+.admin-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 250px;
+  background-color: #34495e;
+  color: #ecf0f1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.admin-sidebar a {
+  display: block;
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.admin-sidebar a:hover {
+  background-color: #2c3e50;
+}
+
+/* Main Content */
+.admin-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #ecf0f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    display: none;
+  }
+
+  .admin-content {
+    padding: 10px;
+  }
+}
+
+.select-datetime {
+  margin-top: 10px;
+}
+
+.button-list {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+
+}
+
+.button-detail {
+  padding: 8px 12px
+}
+
+.btn-close-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
