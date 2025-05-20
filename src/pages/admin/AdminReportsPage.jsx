@@ -120,10 +120,10 @@ function AdminReportsPage() {
           <div className="col-md-6">
             <div className="bg-light rounded p-3 shadow-sm h-100">
               <h5 className="text-primary"><i className="bi bi-bar-chart-line me-2"></i>Theo vị trí ứng tuyển</h5>
-              <ResponsiveContainer width="100%" height={250}>
+              <ResponsiveContainer width="100%" height={500}>
                 <BarChart data={barData}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="position" />
+                  <XAxis dataKey="position" interval={0} angle={-45} textAnchor="end" height={180} />
                   <YAxis />
                   <Tooltip />
                   <Bar dataKey="count" fill="#007bff" />
