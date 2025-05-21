@@ -22,7 +22,7 @@ const LoginPage = () => {
 
     try {
       // Gọi API đăng nhập
-      const response = await axios.post('${import.meta.env.VITE_BACKEND_URL}/login', {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/login`, {
         username,
         password
       });
