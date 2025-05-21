@@ -85,7 +85,7 @@ function AdminCandidatesPage() {
     //   const now = new Date();
     //   const hours = now.getHours();
     //   const minutes = now.getMinutes();
-    //   return hours === 14 && minutes >= 49 && hours === 14 && minutes <= 50;
+    //   return hours === 23 && minutes >= 28 && hours === 23 && minutes <= 30;
     // };
     fetchCandidates(); // Gọi lần đầu
     const interval = setInterval(() => {
@@ -437,6 +437,7 @@ function AdminCandidatesPage() {
             Đặt lịch phỏng vấn
           </button>
         </div>
+
 
         <div className="row mb-4 g-3 align-items-center">
           <div className="col-md-6">

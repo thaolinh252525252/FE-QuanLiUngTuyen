@@ -24,7 +24,7 @@ function AdminDashboardPage() {
           <>
             <p>✅ {stats.new_candidates} Ứng viên mới</p>
             <p>✅ {stats.interviewed} Đã phỏng vấn</p>
-            <p>✅ {stats.results_sent} Đã gửi kết quả</p>
+            {/* <p>✅ {stats.results_sent} Đã gửi kết quả</p> */}
           </>
         ) : (
           <p>Đang tải thống kê...</p>
