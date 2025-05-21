@@ -33,7 +33,7 @@ const LoginPage = () => {
       localStorage.setItem('userRole', response.data.role);
 
       // Chuyển hướng dựa vào vai trò
-      if (response.data.role === 'admin') {
+      if (response.data.role === 'Quản trị viên') {
         navigate('/admin/dashboard');
       } else {
         // Chuyển hướng về trang trước đó hoặc trang chủ

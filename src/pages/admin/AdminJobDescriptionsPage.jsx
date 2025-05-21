@@ -43,24 +43,24 @@ function AdminJobDescriptionsPage() {
   const fetchJobs = async () => {
     try {
       setLoading(true);
+      setError(null);
+
       console.log("🔄 Đang gọi API:", API_URL);
 
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      const res = await fetch(API_URL, {
-        signal: controller.signal,
-      });
+      const response = await fetch(API_URL, { signal: controller.signal });
 
       clearTimeout(timeoutId);
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        console.error("❌ Phản hồi lỗi:", res.status, errorText);
-        throw new Error(`Lỗi ${res.status}: ${errorText || "Không thể tải dữ liệu"}`);
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("❌ Phản hồi lỗi:", response.status, errorText);
+        throw new Error(`Lỗi ${response.status}: ${errorText || "Không thể tải dữ liệu"}`);
       }
 
-      const data = await res.json();
+      const data = await response.json();
       console.log("✅ Dữ liệu nhận được:", data);
 
       if (Array.isArray(data)) {
@@ -71,15 +71,16 @@ function AdminJobDescriptionsPage() {
       }
     } catch (err) {
       console.error("❌ Lỗi chi tiết:", err);
-      if (err.name === 'AbortError') {
-        setError("Kết nối đến server quá thời gian, vui lòng thử lại");
+      if (err.name === "AbortError") {
+        setError("Kết nối đến server quá thời gian, vui lòng thử lại.");
       } else {
-        setError(err.message || "Lỗi không xác định khi kết nối đến server");
+        setError(err.message || "Lỗi không xác định khi kết nối đến server.");
       }
     } finally {
       setLoading(false);
     }
   };
+
 
   const handleEditClick = (job) => {
     console.log("Đang mở modal cho:", job);
