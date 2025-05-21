@@ -40,12 +40,12 @@ function LookupPage() {
       return "📨 Hồ sơ của bạn đang được xem xét.";
     }
 
-    if (ket_qua === "Pass" && trang_thai === "Chờ phỏng vấn") {
+    if (ket_qua === "Pass") {
       return "🎉 Chúc mừng bạn đã qua vòng CV. Bạn sẽ nhận lịch phỏng vấn qua email sớm nhất!";
     }
-    if (ket_qua === "Pass" && trang_thai === "Đã lên lịch phỏng vấn") {
-      return "🎉 Chúc mừng bạn đã qua vòng CV. Hãy kiểm tra email lịch phỏng vấn đã được gửi tới bạn!";
-    }
+    // if (ket_qua === "Pass" && trang_thai === "Đã lên lịch phỏng vấn") {
+    //   return "🎉 Chúc mừng bạn đã qua vòng CV. Hãy kiểm tra email lịch phỏng vấn đã được gửi tới bạn!";
+    // }
 
     if (ket_qua === "Fail CV") {
       return "❌ Rất tiếc! Hồ sơ của bạn chưa phù hợp với vị trí tuyển dụng.";
