@@ -644,7 +644,7 @@ body {
 .admin-card {
   background-color: white;
   border-radius: 12px;
-  padding: 25px;
+  padding: 40px;
   margin-bottom: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
@@ -1661,4 +1661,31 @@ button:active {
   align-items: center;
   justify-content: center;
 
+}
+
+.list-form-email {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.form-person-email {
+  width: 400px;
+  padding: 10px;
+}
+
+.form-email {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-email input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dddddd;
+}
+
+.form-control {
+  padding-right: 0;
 }

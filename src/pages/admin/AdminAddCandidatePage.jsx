@@ -124,16 +124,19 @@ function AdminAddCandidatePage() {
 
               <div className="col-md-6">
                 <label htmlFor="email" className="form-label fw-semibold">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="form-control form-control-lg shadow-sm"
-                  placeholder="example@email.com"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
+                <div className="form-email">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="form-control form-control-lg shadow-sm"
+                    placeholder="example@email.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+
               </div>
 
               <div className="col-md-6">

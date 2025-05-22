@@ -16,15 +16,16 @@ function AdminCandidatesPage() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
-  const [filter, setFilter] = useState("all"); // "all", "pass", "fail", "scheduled", "pending"
-  const [timeFilter, setTimeFilter] = useState("all"); // "all", "today", "yesterday", "7days", "30days"
+  const [numInterviewers, setNumInterviewers] = useState(1);
+  const [interviewerEmails, setInterviewerEmails] = useState([""]);
+  const [filter, setFilter] = useState("all");
+  const [timeFilter, setTimeFilter] = useState("all");
   const [showDeleteConfirmModal, setShowDeleteConfirmModal] = useState(false);
   const [candidateToDelete, setCandidateToDelete] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  // Chuẩn hóa dữ liệu ứng viên
   const normalizeCandidate = (candidate) => ({
     id: candidate.id || "",
     ho_ten: candidate.ho_ten || "-",
@@ -42,7 +43,6 @@ function AdminCandidatesPage() {
     ngay_gui: candidate.ngay_gui || ""
   });
 
-  // Fetch candidates với polling thông minh
   useEffect(() => {
     const fetchCandidates = () => {
       setIsLoading(true);
@@ -74,25 +74,19 @@ function AdminCandidatesPage() {
         });
     };
 
-    //Kiểm tra thời gian để polling gần 8:00 sáng
     const shouldPoll = () => {
       const now = new Date();
       const hours = now.getHours();
       const minutes = now.getMinutes();
       return hours === 7 && minutes >= 55 || hours === 8 && minutes <= 5;
     };
-    // const shouldPoll = () => {
-    //   const now = new Date();
-    //   const hours = now.getHours();
-    //   const minutes = now.getMinutes();
-    //   return hours === 23 && minutes >= 28 && hours === 23 && minutes <= 30;
-    // };
-    fetchCandidates(); // Gọi lần đầu
+
+    fetchCandidates();
     const interval = setInterval(() => {
       if (shouldPoll()) {
         fetchCandidates();
       }
-    }, 60000); // Kiểm tra mỗi phút
+    }, 60000);
 
     return () => clearInterval(interval);
   }, [candidates.length]);
@@ -210,7 +204,7 @@ function AdminCandidatesPage() {
       const names = alreadyScheduled.map(c => c.ho_ten).join(", ");
       toast.error(`Không thể đặt lịch. Các ứng viên sau đã có lịch phỏng vấn: ${names}`, {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 300
       });
       return;
     }
@@ -229,130 +223,148 @@ function AdminCandidatesPage() {
   };
 
   const handleSchedule = () => {
-    if (selectedIds.length && date && time && location) {
-      const alreadyScheduled = candidates.filter(c => selectedIds.includes(c.id) && c.lich_phong_van);
-      const notPassed = candidates.filter(c => selectedIds.includes(c.id) && c.ket_qua !== "Pass");
+    if (!selectedIds.length || !date || !time || !location) {
+      toast.error("Vui lòng nhập đầy đủ thông tin lịch phỏng vấn", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
 
-      if (alreadyScheduled.length > 0) {
-        const names = alreadyScheduled.map(c => c.ho_ten).join(", ");
-        toast.error(`Không thể đặt lịch. Các ứng viên sau đã có lịch phỏng vấn: ${names}`, {
-          position: "top-right",
-          autoClose: 3000,
-        });
-        return;
-      }
+    if (interviewerEmails.some(email => !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
+      toast.error("Vui lòng nhập đầy đủ và đúng định dạng email người phỏng vấn", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
 
-      if (notPassed.length > 0) {
-        const names = notPassed.map(c => c.ho_ten).join(", ");
-        toast.error(`Không thể đặt lịch. Các ứng viên sau chưa Pass CV: ${names}`, {
-          position: "top-right",
-          autoClose: 3000,
-        });
-        return;
-      }
+    const alreadyScheduled = candidates.filter(c => selectedIds.includes(c.id) && c.lich_phong_van);
+    if (alreadyScheduled.length > 0) {
+      const names = alreadyScheduled.map(c => c.ho_ten).join(", ");
+      toast.error(`Không thể đặt lịch. Các ứng viên sau đã có lịch phỏng vấn: ${names}`, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
 
-      setIsLoading(true);
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/candidates/schedule-interview`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          candidateIds: selectedIds,
-          date,
-          time,
-          location
-        }),
+    const notPassed = candidates.filter(c => selectedIds.includes(c.id) && c.ket_qua !== "Pass");
+    if (notPassed.length > 0) {
+      const names = notPassed.map(c => c.ho_ten).join(", ");
+      toast.error(`Không thể đặt lịch. Các ứng viên sau chưa Pass CV: ${names}`, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    const payload = {
+      candidateIds: selectedIds,
+      date,
+      time,
+      location,
+      interviewerEmails: interviewerEmails.filter(email => email),
+    };
+
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/candidates/schedule-interview`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload)
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Lỗi ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
       })
-        .then(res => {
-          if (!res.ok) {
-            throw new Error(`Lỗi ${res.status}: ${res.statusText}`);
-          }
-          return res.json();
-        })
-        .then(data => {
-          console.log("📥 Phản hồi từ server:", data);
-          if (data.success) {
-            const updateStatusPromises = selectedIds.map(id =>
-              fetch(`${import.meta.env.VITE_BACKEND_URL}/candidates/${id}/update-status`, {
-                method: "PATCH",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  trang_thai: "Đã lên lịch phỏng vấn"
-                }),
+      .then(data => {
+        console.log("📥 Phản hồi từ server:", data);
+        if (data.success) {
+          const updateStatusPromises = selectedIds.map(id =>
+            fetch(`${import.meta.env.VITE_BACKEND_URL}/candidates/${id}/update-status`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                trang_thai: "Đã lên lịch phỏng vấn"
+              }),
+            })
+              .then(res => {
+                if (!res.ok) {
+                  throw new Error(`Lỗi ${res.status}: ${res.statusText}`);
+                }
+                return res.json();
               })
+              .catch(err => {
+                console.error(`❌ Lỗi cập nhật trạng thái cho ứng viên ${id}:`, err);
+                return null;
+              })
+          );
+
+          Promise.all(updateStatusPromises)
+            .then(() => {
+              toast.success(data.message, {
+                position: "top-right",
+                autoClose: 3000,
+              });
+
+              fetch(API_URL)
                 .then(res => {
                   if (!res.ok) {
                     throw new Error(`Lỗi ${res.status}: ${res.statusText}`);
                   }
                   return res.json();
                 })
-                .catch(err => {
-                  console.error(`❌ Lỗi cập nhật trạng thái cho ứng viên ${id}:`, err);
-                  return null;
+                .then(updatedCandidates => {
+                  setCandidates(updatedCandidates.map(normalizeCandidate));
+                  setSelectedIds([]);
+                  setShowScheduleModal(false);
+                  setDate("");
+                  setTime("");
+                  setLocation("");
+                  setNumInterviewers(1);
+                  setInterviewerEmails([""]);
+                  setIsLoading(false);
                 })
-            );
-
-            Promise.all(updateStatusPromises)
-              .then(() => {
-                toast.success(data.message, {
-                  position: "top-right",
-                  autoClose: 3000,
-                });
-
-                fetch(API_URL)
-                  .then(res => {
-                    if (!res.ok) {
-                      throw new Error(`Lỗi ${res.status}: ${res.statusText}`);
-                    }
-                    return res.json();
-                  })
-                  .then(updatedCandidates => {
-                    setCandidates(updatedCandidates.map(normalizeCandidate));
-                    setSelectedIds([]);
-                    setShowScheduleModal(false);
-                    setDate("");
-                    setTime("");
-                    setLocation("");
-                    setIsLoading(false);
-                  })
-                  .catch(err => {
-                    console.error("❌ Lỗi khi làm mới danh sách:", err);
-                    setIsLoading(false);
+                .catch(err => {
+                  console.error("❌ Lỗi khi làm mới danh sách:", err);
+                  toast.error("Đã đặt lịch phỏng vấn, nhưng không thể làm mới danh sách.", {
+                    position: "top-right",
+                    autoClose: 3000,
                   });
-              })
-              .catch(err => {
-                console.error("❌ Lỗi khi cập nhật trạng thái:", err);
-                toast.error("Đã đặt lịch phỏng vấn, nhưng không thể cập nhật trạng thái.", {
-                  position: "top-right",
-                  autoClose: 3000,
+                  setIsLoading(false);
                 });
-                setIsLoading(false);
+            })
+            .catch(err => {
+              console.error("❌ Lỗi khi cập nhật trạng thái:", err);
+              toast.error("Đã đặt lịch phỏng vấn, nhưng không thể cập nhật trạng thái.", {
+                position: "top-right",
+                autoClose: 3000,
               });
-          } else {
-            toast.error(data.message || "Không thể đặt lịch phỏng vấn", {
-              position: "top-right",
-              autoClose: 3000,
+              setIsLoading(false);
             });
-            setIsLoading(false);
-          }
-        })
-        .catch(err => {
-          console.error("❌ Lỗi khi đặt lịch phỏng vấn:", err);
-          toast.error(`Không thể đặt lịch phỏng vấn: ${err.message}`, {
+        } else {
+          toast.error(data.message || "Không thể đặt lịch phỏng vấn", {
             position: "top-right",
             autoClose: 3000,
           });
           setIsLoading(false);
+        }
+      })
+      .catch(err => {
+        console.error("❌ Lỗi khi đặt lịch phỏng vấn:", err);
+        toast.error(`Không thể đặt lịch phỏng vấn: ${err.message}`, {
+          position: "top-right",
+          autoClose: 3000,
         });
-    } else {
-      toast.error("Vui lòng nhập đầy đủ thông tin lịch phỏng vấn", {
-        position: "top-right",
-        autoClose: 3000,
+        setIsLoading(false);
       });
-    }
   };
 
   const handleDeleteCandidate = (candidate) => {
@@ -437,7 +449,6 @@ function AdminCandidatesPage() {
             Đặt lịch phỏng vấn
           </button>
         </div>
-
 
         <div className="row mb-4 g-3 align-items-center">
           <div className="col-md-6">
@@ -796,7 +807,11 @@ function AdminCandidatesPage() {
                 </h4>
                 <button
                   className="btn-close"
-                  onClick={() => setShowScheduleModal(false)}
+                  onClick={() => {
+                    setShowScheduleModal(false);
+                    setNumInterviewers(1);
+                    setInterviewerEmails([""]);
+                  }}
                   aria-label="Close"
                 ></button>
               </div>
@@ -836,7 +851,7 @@ function AdminCandidatesPage() {
                   </label>
                   <input
                     type="date"
-                    className="form-control shadow-sm"
+                    className="form-control shadow-sm "
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     min={new Date().toISOString().split("T")[0]}
@@ -857,7 +872,7 @@ function AdminCandidatesPage() {
                   />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-3">
                   <label className="form-label fw-bold text-primary">
                     Địa điểm:
                   </label>
@@ -871,11 +886,62 @@ function AdminCandidatesPage() {
                   />
                 </div>
 
+                <div className="mb-3">
+                  <label className="form-label fw-bold text-primary">
+                    Số lượng người phỏng vấn:
+                  </label>
+                  <select
+                    className="form-control shadow-sm"
+                    value={numInterviewers}
+                    onChange={(e) => {
+                      const num = parseInt(e.target.value);
+                      setNumInterviewers(num);
+                      setInterviewerEmails(prev => {
+                        const newEmails = Array(num).fill("");
+                        for (let i = 0; i < Math.min(prev.length, num); i++) {
+                          newEmails[i] = prev[i];
+                        }
+                        return newEmails;
+                      });
+                    }}
+                  >
+                    {[1, 2, 3, 4, 5].map(num => (
+                      <option key={num} value={num}>{num}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {interviewerEmails.map((email, index) => (
+                  <div className="mb-3" key={index}>
+                    <label className="form-label fw-bold text-primary">
+                      Email người phỏng vấn {index + 1}:
+                    </label>
+                    <div className="list-form-email">
+                      <input
+                        type="email"
+                        className="form-control shadow-sm form-person-email"
+                        placeholder={`Nhập email người phỏng vấn ${index + 1}`}
+                        value={email}
+                        onChange={(e) => {
+                          const newEmails = [...interviewerEmails];
+                          newEmails[index] = e.target.value;
+                          setInterviewerEmails(newEmails);
+                        }}
+                        required
+                      />
+                    </div>
+                  </div>
+                ))}
+
                 <div className="d-flex justify-content-end gap-3">
                   <button
                     type="button"
                     className="btn btn-outline-secondary"
-                    onClick={() => setShowScheduleModal(false)}
+                    onClick={() => {
+                      setShowScheduleModal(false);
+                      setNumInterviewers(1);
+                      setInterviewerEmails([""]);
+                    }}
                   >
                     Hủy
                   </button>
